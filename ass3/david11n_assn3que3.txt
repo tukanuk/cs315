@@ -1,0 +1,101 @@
+Script started on Thu 15 Nov 2018 05:10:34 PM EST
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ sqlplus david11n
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Nov 15 17:10:39 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[KEnter password: [KEnter password: **********************[KEnter password: **********************[KEnter password: 
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [KSQL> /* (a)[C[C[C Insert a new airport <'YTT', ‘Tintin Airport’, ‘Tintin’, 'ON'> [C[C[C[C[C[K[K       in the database. */[K/* (a) Insert a new airport <'YTT', ‘Tintin Airport’, ‘Tintin’, 'ON'> 
+SQL> [KSQL> INSERT INTO airport[C[C[C[C[C[K       in the database. */
+SQL> [KSQL>     VALUES ('YTT', 'Tintin Airport', 'Tintin', 'ON')[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[KSQL> INSERT INTO airport
+  2  [K  2      VALUES ('YTT', 'Tintin Airport', 'Tintin', 'ON');[C[C[C[C[C[K[K    VALUES ('YTT', 'Tintin Airport', 'Tintin', 'ON');
+
+1 row created.
+
+SQL> [KSQL> /* (b)[C[C[C[K[KSQL> 
+SQL> [KSQL> /* (b) Change the Customer_phone of customer ‘Tony Appa’ [C[C[C[C[C[K[K       to 519-253-4001.*/[K/* (b) Change the Customer_phone of customer ‘Tony Appa’ 
+SQL> [KSQL>        to 519-253-4001.*/
+SQL> [KSQL> UPDATE seat_reservation[C[C[C[C[C[K
+SQL> [KSQL>     SET Customer_phone='519-253-4001'  [C[C[C[C[C[KUPDATE seat_reservation
+  2  [K  2      WHERE Customer_name='Tony Appa';[C[C[C[C[C[K    SET Customer_phone='519-253-4001'  
+  3  [K  3      WHERE Customer_name='Tony Appa';
+
+2 rows updated.
+
+SQL> [KSQL> /* (c)[C[C[C[K[KSQL> 
+SQL> [KSQL> /* (c) Insert a new flight <'AC331,'Air Canada', 2>.*/[C[C[C[C[C[K[K/* (c) Insert a new flight <'AC331,'Air Canada', 2>.*/
+SQL> [KSQL> INSERT INTO flight[C[C[C[C[C[K
+SQL> [KSQL>     VALUES ('AC331', 'Air Canada', 2)[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[C[K[KSQL> INSERT INTO flight
+  2  [K  2      VALUES ('AC331', 'Air Canada', 2);[C[C[C[C[C[K[K    VALUES ('AC331', 'Air Canada', 2);
+
+1 row created.
+
+SQL> [KSQL> /* (d)[C[C[C[K[KSQL> 
+SQL> [KSQL> /* (d) Delete all reservation records for the customer [C[C[C[C[C[K[K       whose name is 'Mariane Mooer '.*/[K/* (d) Delete all reservation records for the customer 
+SQL> [KSQL> DELETE FROM seat_reservation[C[C[C[C[C[K       whose name is 'Mariane Mooer '.*/
+SQL> [KSQL>     WHERE Customer_name='Mariane Mooer';[C[C[C[C[C[KDELETE FROM seat_reservation
+  2  [K  2      WHERE Customer_name='Mariane Mooer';
+
+2 rows deleted.
+
+SQL> [KSQL> SELECT * FROM airport;[C[C[C[C[C[K
+SQL> [KSQL> SELECT * FROM seat_reservation;[C[C[C[C[C[KSELECT * FROM airport;
+
+AIR NAME		      CITY	      ST
+--- ------------------------- --------------- --
+YTT Tintin Airport	      Tintin	      ON
+YYZ Pearson Airport	      Toronto	      ON
+YTZ Island Airpot	      Toronto	      ON
+YQT Thunder Bay Airport       Thunder Bay     ON
+YQG Windsor Airport	      Windsor	      ON
+YYC Calgary Airport	      Calgary	      ON
+
+6 rows selected.
+
+SQL> [KSQL> SELECT * FROM flight;[C[C[C[C[C[K[KSQL> SELECT * FROM seat_reservation;
+[KSELECT * FROM flight;[K
+FLIGH LEG_NUMBER FDATE	   SEAT CUSTOMER_NAME		  CUSTOMER_PHO
+----- ---------- --------- ---- ------------------------- ------------
+WJ250	       1 15-JAN-17 6A	Tony Appa		  519-253-4001
+WJ250	       2 15-JAN-17 7D	Tony Appa		  519-253-4001
+WJ250	       1 15-JAN-17 6B	Karen Appa		  226-253-4000
+WJ250	       2 15-JAN-17 7C	Karen Appa		  226-253-4000
+AC275	       1 10-JAN-17 5C	Mark Black		  226-212-5341
+AC275	       2 10-JAN-17 14B	Mark Black		  226-212-5341
+PA233	       1 30-JAN-17 5A	Peter Opo		 [KPA233	       1 30-JAN-17 5A	Peter Opo		 SELECT * FROM flight;[K[KPA233	       1 30-JAN-17 5A	Peter Opo		  519-444-1234
+PA280	       1 20-JAN-17 16D	Chris Natta		  226-123-5555
+
+8 rows selected.
+
+SQL> [KSQL> SELECT * FROM flight;[C[C[C[C[C[KSELECT * FROM flight;
+
+FLIGH AIRLINE		WEEKDAYS
+----- --------------- ----------
+AC331 Air Canada	       2
+WJ250 WestJet		       3
+WJ261 WestJet		       4
+AC275 Air Canada	       2
+AC300 Air Canada	       3
+AC320 Air Canada	       2
+PA233 Porter Airline	       5
+PA280 Porter Airline	       4
+
+8 rows selected.
+
+SQL> [KSQL> [KSQL> rollbnac[K[K[Kack;[C[C[C[C[C[Krollback;
+
+Rollback complete.
+
+SQL> [KSQL> [KSQL> exit[Kexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ exit
+exit
+
+Script done on Thu 15 Nov 2018 05:12:00 PM EST

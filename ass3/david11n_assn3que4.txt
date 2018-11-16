@@ -1,0 +1,63 @@
+Script started on Thu 15 Nov 2018 05:39:38 PM EST
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ sqlplus davud[K[Kidd[K11n
+[K
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Nov 15 17:39:48 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[KEnter password: [KEnter password: **********************[KEnter password: **********************[KEnter password: 
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [KSQL> /* (a)[C[C[C Retrieve the customer names and flight number of [C[C[C[C[C[K[K       all 2-leg flyers (customers who have flights with [K/* (a) Retrieve the customer names and flight number of 
+SQL> [KSQL>        2 legs in all their flights)[C[C[C[C[C[K[KSQL>        all 2-leg flyers (customers who have flights with 
+SQL> [KSQL>        2 legs in all their flights).[C[C[C[C[C[K[K    CUSTOMER_NAME[K       2 legs in all their flights).
+SQL> [KSQL>     CUSTOMER_NAME  FLIGH[C[C[C[C[C[K[K    ------------------------- -----[K    CUSTOMER_NAME  FLIGH
+SQL> [KSQL>     Mark Black[C[C[C[C[C[K[KSQL>     ------------------------- -----
+SQL> [KSQL>     Mark Black  AC275[C[C[C[C[C[K[K    Karen Appa[K    Mark Black  AC275
+SQL> [KSQL>     Karen Appa  WJ250[C[C[C[C[C[K[K    Tony Appa[K    Karen Appa  WJ250
+SQL> [KSQL>     Tony Appa  WJ250 */[C[C[C[C[C[K[K    Tony Appa  WJ250 */
+SQL> [KSQL> SELECT DISTINCT s.Customer_name, s.Flight_number[C[C[C[C[C[K
+SQL> [KSQL>     FROM    Seat_Reservation s[C[C[C[C[C[KSELECT DISTINCT s.Customer_name, s.Flight_number
+  2  [K  2      WHERE EXISTS (SELECT *[C[C[C[C[C[K    FROM    Seat_Reservation s
+  3  [K  3                      FROM flight_leg f[C[C[C[C[C[K    WHERE EXISTS (SELECT *
+  4  [K  4                      WHERE s.Flight_number = f.Flight_number[C[C[C[C[C[K                    FROM flight_leg f
+  5  [K  5                         AND f.Leg_number=2)[C[C[C[C[C[K[K  5                      WHERE s.Flight_number = f.Flight_number
+  6  [K  6                         AND f.Leg_number=2);[C[C[C[C[C[K[K                       AND f.Leg_number=2);
+[K/* b)[K
+CUSTOMER_NAME		  FLIGH
+------------------------- -----
+Mark Black		  AC275
+Karen Appa		  WJ250
+Tony Appa		  WJ250
+
+SQL> 
+SQL> [KSQL> /* b) Retrieve the customer names and flight number of [C[C[C[C[C[K[K      all customers who do not have any 2-leg flight in [K/* b) Retrieve the customer names and flight number of 
+SQL> [KSQL>       any of their flights.[C[C[C[C[C[K      all customers who do not have any 2-leg flight in 
+SQL> [KSQL>     CUSTOMER_NAME[C[C[C[C[C[K[KSQL>       any of their flights.
+SQL> [KSQL>     CUSTOMER_NAME  FLIGH[C[C[C[C[C[K[K    ------------------------- -----[K    CUSTOMER_NAME  FLIGH
+SQL> [KSQL>     Peter Opo[C[C[C[C[C[K[KSQL>     ------------------------- -----
+SQL> [KSQL>     Peter Opo  PA233[C[C[C[C[C[K[K    Chris Natta[K    Peter Opo  PA233
+SQL> [KSQL>     Chris Natta  PA280 */[C[C[C[C[C[K[K    Chris Natta  PA280 */
+SQL> [KSQL> SELECT DISTINCT s.Customer_name, s.Flight_number[C[C[C[C[C[K
+SQL> [KSQL>     FROM Seat_Reservation s[C[C[C[C[C[KSELECT DISTINCT s.Customer_name, s.Flight_number
+  2  [K  2      WHERE NOT EXISTS (SELECT * [C[C[C[C[C[K    FROM Seat_Reservation s
+  3  [K  3                          FROM flight_leg f[C[C[C[C[C[K    WHERE NOT EXISTS (SELECT * 
+  4  [K  4                          WHERE s.Flight_number = f.Flight_number[C[C[C[C[C[K                        FROM flight_leg f
+  5  [K  5                             AND f.Leg_number = 2)[C[C[C[C[C[K[K  5                          WHERE s.Flight_number = f.Flight_number
+  6  [K  6                             AND f.Leg_number = 2);[C[C[C[C[C[K                           AND f.Leg_number = 2);
+
+CUSTOMER_NAME		  FLIGH
+------------------------- -----
+Peter Opo		  PA233
+Chris Natta		  PA280
+
+SQL> [KSQL> [KSQL> exit[Kexit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ exit
+exit
+
+Script done on Thu 15 Nov 2018 05:40:31 PM EST

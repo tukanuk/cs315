@@ -1,0 +1,178 @@
+Script started on Thu 15 Nov 2018 11:39:47 AM EST
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ sqlplus david11n
+[K
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Nov 15 11:39:55 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[KEnter password: [KEnter password: **********************[KEnter password: **********************[KEnter password: 
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [KSQL> @david11n_airlineschema.sql[C[C[C[C[C[K@david11n_airlineschema.sql
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+SQL> [KSQL> [KSQL> @david11n_airlinedata.sql[C[C[C[C[C[K@david11n_airlinedata.sql
+
+5 rows created.
+
+
+7 rows created.
+
+
+6 rows created.
+
+
+6 rows created.
+
+
+6 rows created.
+
+
+10 rows created.
+
+SQL> [KSQL> [KSQL> @david11n_airlineshow.sql[C[C[C[C[C[K@david11n_airlineshow.sql
+
+AIR NAME		      CITY	      ST
+--- ------------------------- --------------- --
+YYZ Pearson Airport	      Toronto	      ON
+YTZ Island Airpot	      Toronto	      ON
+YQT Thunder Bay Airport       Thunder Bay     ON
+YQG Windsor Airport	      Windsor	      ON
+YYC Calgary Airport	      Calgary	      ON
+
+
+FLIGH AIRLINE		WEEKDAYS
+----- --------------- ----------
+WJ250 WestJet		       3
+WJ261 WestJet		       4
+AC275 Air Canada	       2
+AC300 Air Canada	       3
+AC320 Air Canada	       2
+PA233 Porter Airline	       5
+PA280 Porter Airline	       4
+
+7 rows selected.
+
+
+FLIGH LEG_NUMBER DEP SCHED ARR SCHED
+----- ---------- --- ----- --- -----
+WJ250	       1 YQG 08:00 YYZ 09:00
+WJ250	       2 YYZ 12:00 YYC 17:00
+AC275	       1 YQT 10:00 YYZ 11:00
+AC275	       2 YYZ 13:00 YQG 14:00
+PA233	       1 YQG 16:00 YYZ 17:00
+PA280	       1 YYZ 11:00 YQG 12:00
+
+6 rows selected.
+
+
+FLIGH LEG_NUMBER FDATE	   NUM_AVAILABLE_SEATS AIRPLANE_ID     DEP DEPAR ARR ARRIV
+----- ---------- --------- ------------------- --------------- --- ----- --- -----
+WJ250	       1 15-JAN-17		   200 Boeing_777      YQG 8:00  YYZ 8:50
+WJ250	       2 15-JAN-17		   200 Boeing_777      YYZ 12:30 YYC 16:50
+AC275	       1 10-JAN-17		    60 Airbus_200      YQT 10:00 YYZ 11:00
+AC275	       2 10-JAN-17		    60 Airbus_200      YYZ 13:00 YQG 14:00
+PA233	       1 30-JAN-17		   120 Boeing_737      YQG 16:00 YYZ 17:00
+PA280	       1 20-JAN-17		   120 Boeing_737      YYZ 11:00 YQG 12:00
+
+6 rows selected.
+
+
+FLIGH FA     AMOUNT RESTRICTIONS
+----- -- ---------- --------------------
+WJ250 F1	250 None
+WJ250 F2	350 None
+AC275 F1	275 Non-refundable
+AC275 F2	300 Non-refundable
+PA233 F3	150 None
+PA280 F3	150 None
+
+6 rows selected.
+
+
+FLIGH LEG_NUMBER FDATE	   SEAT CUSTOMER_NAME		  CUSTOMER_PHO
+----- ---------- --------- ---- ------------------------- ------------
+WJ250	       1 15-JAN-17 20A	Mariane Mooer		  519-253-3000
+WJ250	       2 15-JAN-17 13D	Mariane Mooer		  519-253-3000
+WJ250	       1 15-JAN-17 6A	Tony Appa		  226-253-4000
+WJ250	       2 15-JAN-17 7D	Tony Appa		  226-253-4000
+WJ250	       1 15-JAN-17 6B	Karen Appa		  226-253-4000
+WJ250	       2 15-JAN-17 7C	Karen Appa		  226-253-4000
+AC275	       1 10-JAN-17 5C	Mark Black		  226-212-5341
+AC275	       2 10-JAN-17 14B	Mark Black		  226-212-5341
+PA233	       1 30-JAN-17 5A	Peter Opo		  519-444-1234
+PA280	       1 20-JAN-17 16D	Chris Natta		  226-123-5555
+
+10 rows selected.
+
+SQL> [KSQL> [KSQL> @david11n_airlinedroptable.sql[C[C[C[C[C[K@david11n_airlinedroptable.sql
+
+10 rows deleted.
+
+
+6 rows deleted.
+
+
+6 rows deleted.
+
+
+6 rows deleted.
+
+
+7 rows deleted.
+
+
+5 rows deleted.
+
+[K
+Table dropped.
+
+[K
+Table dropped.
+
+[K
+Table dropped.
+
+[K
+Table dropped.
+
+[K
+Table dropped.
+
+[K
+Table dropped.
+
+
+TABLE_NAME		       TABLE_TYPE
+------------------------------ -----------
+WORKSIN 		       TABLE
+STUDENTS		       TABLE
+SALESREP		       TABLE
+SALESAREA		       TABLE
+
+SQL> [KSQL> [KSQL> quit[Kquit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ exit
+exit
+
+Script done on Thu 15 Nov 2018 11:41:27 AM EST

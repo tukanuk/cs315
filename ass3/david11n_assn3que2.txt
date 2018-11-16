@@ -1,0 +1,57 @@
+Script started on Thu 15 Nov 2018 04:49:07 PM EST
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ sqlplus david11n
+
+SQL*Plus: Release 12.1.0.2.0 Production on Thu Nov 15 16:49:15 2018
+
+Copyright (c) 1982, 2014, Oracle.  All rights reserved.
+
+Enter password: [KEnter password: [K[KEnter password: [KEnter password: **********************[KEnter password: **********************[KEnter password: 
+[K
+Connected to:
+Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+
+SQL> [KSQL> [KSQL> @ass3[K[K[K[Kad[K[Kdavid11n_assn3qu2[Ke2.sql[C[C[C[C[C[K@david11n_assn3que2.sql
+
+CUSTOMER_NAME		  FLIGH
+------------------------- -----
+Peter Opo		  PA233
+Karen Appa		  WJ250
+Tony Appa		  WJ250
+Mariane Mooer		  WJ250
+
+
+FLIGH LEG_NUMBER
+----- ----------
+AC275	       1
+AC275	       2
+WJ250	       1
+WJ250	       2
+
+
+FLIGH AIRLINE	      FDATE	COUNT(CUSTOMER_NAME)
+----- --------------- --------- --------------------
+PA233 Porter Airline  30-JAN-17 		   1
+WJ250 WestJet	      15-JAN-17 		   3
+PA280 Porter Airline  20-JAN-17 		   1
+AC275 Air Canada      10-JAN-17 		   1
+
+
+CUSTOMER_NAME		  SEAT FLIGH
+------------------------- ---- -----
+Mark Black		  5C   AC275
+Mark Black		  14B  AC275
+
+
+CUSTOMER_NAME		  FLIGH DEP DEPART		      ARR ARRIVE
+------------------------- ----- --- ------------------------- --- -------------------------
+Peter Opo		  PA233 YQG Windsor Airport	      YYZ Pearson Airport
+Chris Natta		  PA280 YYZ Pearson Airport	      YQG Windsor Airport
+
+SQL> [KSQL> [KSQL> quirt[K[Kt[Kquit
+Disconnected from Oracle Database 11g Enterprise Edition Release 11.2.0.1.0 - 64bit Production
+With the Partitioning, OLAP, Data Mining and Real Application Testing options
+]0;david11n@ltsp-amd64-bravo: ~[01;32mdavid11n@ltsp-amd64-bravo[00m:[01;34m~[00m$ exit
+exit
+
+Script done on Thu 15 Nov 2018 04:52:02 PM EST
